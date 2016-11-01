@@ -21,7 +21,6 @@ type MQTTOption struct {
 	Qos          int
 	Retain       bool
 	Topic        string
-	Subscribe    string
 	Msg          string
 	Username     string
 	Password     string
@@ -47,9 +46,8 @@ func main() {
 	action := flag.String("a", "p", "p:publish,s:subscribe")
 	qos := flag.Int("q", 0, "quality level 0|1|2")
 	retain := flag.Bool("r", false, "message retain")
-	topic := flag.String("t", "mqtt-benchmark", "publish topic")
+	topic := flag.String("t", "mqtt-benchmark", "topic")
 	msg := flag.String("m", "hello world", "messages")
-	subscribe := flag.String("s", "mqtts/test", "subscribe topic")
 	username := flag.String("u", "", "username")
 	password := flag.String("P", "", "password")
 	client := flag.Int("c", 200, "number of concurrency")
@@ -67,7 +65,6 @@ func main() {
 	mqttOption.Retain = *retain
 	mqttOption.Topic = *topic
 	mqttOption.Msg = *msg
-	mqttOption.Subscribe = *subscribe
 	mqttOption.Username = *username
 	mqttOption.Password = *password
 	mqttOption.IntervalTime = *interval
